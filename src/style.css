@@ -1,0 +1,15 @@
+ul#department-list {
+  list-style: none;
+  padding-inline-start: 0;
+  margin-block-start: 0;
+}
+
+ul#department-list li:hover, .selected-list-item {
+  cursor: pointer;
+  padding-left: 10px;
+  font-weight: 700;
+}
+
+img {
+  height: 300px;
+}
