@@ -1,23 +1,24 @@
 console.log("it works");
 const baseMetUrl = "https://collectionapi.metmuseum.org/public/collection/v1/";
 let departmentSelectionId;
+
 async function getDepartments() {
   try {
     const url = baseMetUrl + "departments";
     const response = await fetch(url, { mode: "cors" });
     const json = await response.json();
     const departments = json.departments;
-    displayDepartments(departments);
+    appendDepartments(departments);
     console.log(departments);
   } catch (error) {
     console.log(error);
   }
 }
-
 getDepartments();
+
 let listItem;
-function displayDepartments(data) {
-  const list = document.getElementById("department-list");
+function appendDepartments(data) {
+  const list = document.getElementById("nav-departments");
   data.forEach((departmentName) => {
     const listItem = document.createElement("li");
     listItem.textContent = departmentName.displayName;
@@ -45,6 +46,12 @@ function handleDepartmentListClick(event) {
   currentSelection.classList.add("selected-list-item");
 
   getObjectIds(currentSelection.dataset.id);
+}
+
+function toggleNavList() {
+  const navContainer = document.getElementById("nav-container");
+  navContainer.classList.toggle("nav-container-hidden");
+  navContainer.classList.toggle("slide-in");
 }
 
 //api call to retrieve list of object ids
@@ -93,3 +100,6 @@ function displayObjectData(item) {
   metLink.href = item.objectURL;
   date.textContent = item.objectDate;
 }
+
+const navButton = document.getElementById("nav-button");
+navButton.addEventListener("click", toggleNavList);
