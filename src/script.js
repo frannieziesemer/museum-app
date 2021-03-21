@@ -1,6 +1,7 @@
 console.log("it works");
 const baseMetUrl = "https://collectionapi.metmuseum.org/public/collection/v1/";
-let departmentSelectionId;
+let departmentSelectionId, listItem;
+const navContainer = document.getElementById("nav-container");
 
 async function getDepartments() {
   try {
@@ -16,7 +17,6 @@ async function getDepartments() {
 }
 getDepartments();
 
-let listItem;
 function appendDepartments(data) {
   const list = document.getElementById("nav-departments");
   data.forEach((departmentName) => {
@@ -44,12 +44,11 @@ function handleDepartmentListClick(event) {
   });
   //set current link as selected
   currentSelection.classList.add("selected-list-item");
-
+  toggleNavList();
   getObjectIds(currentSelection.dataset.id);
 }
 
 function toggleNavList() {
-  const navContainer = document.getElementById("nav-container");
   navContainer.classList.toggle("nav-container-hidden");
   navContainer.classList.toggle("slide-in");
 }

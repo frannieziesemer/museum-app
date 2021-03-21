@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "node-sass": "^5.0.0",
+    "sass": "^1.32.8"
+  },
+  "name": "met-museum",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass src/styles/sass/main.scss src/styles/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frannieziesemer/museum-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frannieziesemer/museum-app/issues"
+  },
+  "homepage": "https://github.com/frannieziesemer/museum-app#readme"
+}

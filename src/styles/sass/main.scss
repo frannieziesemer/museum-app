@@ -1,0 +1,154 @@
+body {
+  height: 100%;
+  background: #1d1b1b;
+  font-family: "Kanit", sans-serif;
+}
+.container {
+  margin: 0;
+}
+h1,
+li {
+  color: #f0ffff;
+}
+
+// menu button 
+#nav-button {
+  background: none;
+  color: #fff;
+  border: none;
+
+  .arrow {
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+  
+  .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+
+  .left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
+}
+
+
+#nav-container {
+  position: absolute;
+  z-index: 100;
+}
+/* navigation list of museum departments */
+ul#nav-departments {
+  list-style: none;
+  padding-inline-start: 0;
+  margin-block-start: 0;
+
+  li:hover, .selected-list-item {
+    cursor: pointer;
+    padding-left: 10px;
+    font-weight: 700;
+  }
+  li {
+    padding: 7px 0;
+  }
+
+}
+
+
+
+/* handles nav-container animation - 
+not using display: none or display: hidden due to accessibility issues*/
+.nav-container-hidden {
+  animation: slide-left 1.5s forwards;
+}
+.slide-in {
+  animation: slide-right 1.5s forwards;
+  position: absolute;
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+}
+
+
+// item overlay to fit over image 
+#item-card {
+  position: relative;
+  height: 80vmin;
+  padding: 10px;
+
+  .image {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+    
+  .item-desc-wrapper {
+    position: absolute;
+    color: white;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: .5s ease;
+    overflow:hidden;
+  }
+  
+}
+
+// hover over image
+#item-card:hover > .item-desc-wrapper {
+  opacity: 1;
+  background: #000000ab;
+}
+
+// overlay grid display 
+.item-desc-wrapper {
+  display: grid;
+  grid-template-columns: 2fr;
+  grid-template-rows: 2fr;
+  grid-template-areas: 
+    "title title"
+    "description link";
+
+  .title {
+    grid-area: title;
+    align-self: start;
+    font-weight: 800;
+    font-size: 26px;
+  }
+
+  .item-data {
+    grid-area: description;
+    align-self: end;
+    font-size: 20px;
+  }
+
+  .link {
+    grid-area: link;
+    align-self: end;
+  }
+
+  p {
+    margin: 0;
+  }
+}
