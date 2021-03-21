@@ -51,6 +51,10 @@ function handleDepartmentListClick(event) {
 function toggleNavList() {
   navContainer.classList.toggle("nav-container-hidden");
   navContainer.classList.toggle("slide-in");
+
+  const arrow = document.querySelector(".arrow");
+  arrow.classList.toggle("right");
+  arrow.classList.toggle("left");
 }
 
 //api call to retrieve list of object ids
